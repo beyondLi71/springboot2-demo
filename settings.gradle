@@ -3,4 +3,4 @@ pluginManagement {
 		gradlePluginPortal()
 	}
 }
-rootProject.name = 'visual-cloud'
+rootProject.name = 'springboot2-demo'
