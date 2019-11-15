@@ -16,5 +16,5 @@ public interface TestQueryMapper {
      * @return
      */
     @Select("select id, name, age from user_info")
-    List<UserInfoPO> getinfo();
+    List<UserInfoPO> getInfo();
 }

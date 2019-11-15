@@ -1,12 +1,13 @@
 package com.maxrocky.controller.test;
 
+import com.maxrocky.common.utils.apiresult.AbstractApiResult;
 import com.maxrocky.common.utils.page.PageParam;
 import com.maxrocky.common.utils.page.PageResult;
+import com.maxrocky.entity.dto.test.AddUserInfoDTO;
 import com.maxrocky.service.test.TestService;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -16,6 +17,7 @@ import javax.annotation.Resource;
  * Desc .
  */
 @RestController
+@Api(value = "test", tags = {"swagger测试展示"})
 @RequestMapping(value = "/test")
 public class TestController {
 
@@ -23,14 +25,23 @@ public class TestController {
     TestService testService;
 
     @RequestMapping(value = "/get/info", method = RequestMethod.GET)
+    @ApiOperation(value = "分页展示", produces = "application/json")
     public PageResult getInfo(@ModelAttribute PageParam pageParam) {
-        PageResult pageResult = testService.getinfo(pageParam);
+        PageResult pageResult = testService.getInfo(pageParam);
         return pageResult;
     }
 
     @RequestMapping(value = "/err/info", method = RequestMethod.GET)
-    public String errInfo() {
+    @ApiOperation(value = "异常展示", produces = "application/json")
+    public AbstractApiResult errInfo() {
         testService.errInfo();
-        return "ok";
+        return AbstractApiResult.success("ok");
+    }
+
+    @RequestMapping(value = "/add/info", method = RequestMethod.POST)
+    @ApiOperation(value = "新增展示", produces = "application/json")
+    public AbstractApiResult addInfo(@RequestBody AddUserInfoDTO addUserInfoDTO) {
+        testService.addInfo(addUserInfoDTO);
+        return AbstractApiResult.success("ok");
     }
 }

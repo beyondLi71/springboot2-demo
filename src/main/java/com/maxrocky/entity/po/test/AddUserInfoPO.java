@@ -1,8 +1,12 @@
-package com.maxrocky.entity.vo.test;
+package com.maxrocky.entity.po.test;
 
+import io.swagger.annotations.ApiParam;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 /**
  * Created by beyondLi
@@ -12,7 +16,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserInfoVO {
+public class AddUserInfoPO {
     //id
     private String id;
     //姓名
