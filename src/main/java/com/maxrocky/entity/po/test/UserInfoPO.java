@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class UserInfoPO {
     //id
-    private Integer id;
+    private String id;
     //姓名
     private String name;
     //年龄
